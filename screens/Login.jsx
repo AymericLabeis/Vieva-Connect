@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Pressable, Alert, KeyboardAvoidingView, Platform } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  Pressable,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const handleLogin = () => {
-    // Exemple de validation basique
-    if (!email || !password) {
-      Alert.alert('Erreur', 'Veuillez remplir tous les champs');
-      return;
-    }
-    // Ici, appeler ton API ou logique de connexion
-    Alert.alert('Succès', `Connexion avec ${email}`);
-  };
+  const navigation = useNavigation();
 
   return (
     <KeyboardAvoidingView
@@ -41,10 +40,12 @@ export default function LoginScreen() {
         />
 
         <Pressable
-          onPress={handleLogin}
-          className="bg-blue-600 rounded-xl py-3 mt-4"
+          onPress={() => navigation.navigate('MenuHome')}
+          className="bg-primaryBtn rounded-xl py-3 mt-4"
         >
-          <Text className="text-white text-center text-lg font-semibold">Se connecter ///</Text>
+          <Text className="text-white text-center text-lg font-semibold">
+            Se connecter
+          </Text>
         </Pressable>
       </View>
     </KeyboardAvoidingView>

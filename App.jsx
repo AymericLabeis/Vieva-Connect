@@ -7,7 +7,9 @@ import { View, Text } from 'react-native';
 import LoginScreen from './screens/Login';
 import SignUpScreen from './screens/SignUp';
 import HomeScreen from './screens/Home';
-import MenuScreen from './screens/MenuHome'; // MenuDrawer est intégré dans MenuHome maintenant
+import MenuScreen from './screens/MenuHome'; 
+import Contact from './screens/Contact';
+
 
 import './global.css';
 
@@ -48,8 +50,11 @@ export default function App() {
         <Stack.Screen 
           name="MenuHome" 
           component={MenuScreen}
-          options={{ headerShown: false }} // ← Le header est maintenant géré dans MenuHome
+          options={{ headerShown: false }} 
         />
+        <Stack.Screen
+         name="Contact" component={Contact} 
+         />
       </Stack.Navigator>
     </NavigationContainer>
   );

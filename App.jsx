@@ -29,7 +29,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="MenuHome">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen 
           name="Home" 
           component={HomeScreen} 

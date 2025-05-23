@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primaryBtn: '#32465a',    // Ton bleu personnalisé
+        primary: '#32465a',    // Ton bleu personnalisé
         secondary: '#1e3a8a',  // Un autre exemple
         navColor:'#5C5D8F',
       },

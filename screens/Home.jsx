@@ -25,7 +25,7 @@ export default function HomeScreen() {
       <View className="space-y-4" style={{ width: buttonWidth }}>
         <Pressable
           onPress={() => navigation.navigate('Login')}
-          className="bg-primaryBtn rounded-xl py-3"
+          className="bg-primary rounded-xl py-3"
           style={{ width: '100%' }}
         >
           <Text className="text-white text-center font-inter text-lg">Connexion</Text>
@@ -33,7 +33,7 @@ export default function HomeScreen() {
 
         <Pressable
           onPress={() => navigation.navigate('SignUp')}
-          className="bg-primaryBtn rounded-xl py-3"
+          className="bg-primary rounded-xl py-3"
           style={{ width: '100%' }}
         >
           <Text className="text-white text-center font-inter text-lg">Inscription</Text>

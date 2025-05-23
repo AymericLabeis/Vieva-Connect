@@ -1,53 +1,69 @@
-import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  Pressable,
-  KeyboardAvoidingView,
-  Platform,
-} from 'react-native';
+import React from 'react';
+import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 export default function LoginScreen() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const navigation = useNavigation();
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      className="flex-1 bg-white px-6 justify-center"
-    >
-      <Text className="text-3xl font-bold mb-6 text-center">Connexion</Text>
+    <View className="flex-1 justify-center items-center bg-[#b5c2c9] px-4">
+      <View className="w-full max-w-xl bg-primary p-6 rounded-xl border-2 border-[#FFD369] shadow-xl">
 
-      <View className="space-y-4">
+        {/* Email */}
+        <Text className="text-white text-lg mb-1">Adresse e-mail</Text>
         <TextInput
-          className="border border-gray-300 rounded-md px-4 py-3 text-base"
-          placeholder="Email"
+          className="bg-white rounded-md p-3 mb-4 text-gray-800"
+          placeholder="Entrez votre e-mail"
           keyboardType="email-address"
-          autoCapitalize="none"
-          value={email}
-          onChangeText={setEmail}
         />
 
+        {/* Mot de passe */}
+        <Text className="text-white text-lg mb-1">Mot de passe</Text>
         <TextInput
-          className="border border-gray-300 rounded-md px-4 py-3 text-base"
-          placeholder="Mot de passe"
+          className="bg-white rounded-md p-3 mb-4 text-gray-800"
+          placeholder="Entrez votre mot de passe"
           secureTextEntry
-          value={password}
-          onChangeText={setPassword}
         />
 
-        <Pressable
+        {/* Lien mot de passe oublié */}
+        <View className="mb-3 items-center">
+          <TouchableOpacity>
+            <Text className="text-[#FFD369] text-lg font-medium">Mot de passe oublié ?</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* Bouton Connexion */}
+        <TouchableOpacity className="bg-[#FFD369] py-3 rounded-md mb-3">
+          <Text 
           onPress={() => navigation.navigate('MenuHome')}
-          className="bg-primaryBtn rounded-xl py-3 mt-4"
-        >
-          <Text className="text-white text-center text-lg font-semibold">
-            Se connecter
+          className="text-center text-[#37445a] text-lg font-bold">
+            Connexion
+            </Text>
+        </TouchableOpacity>
+
+        {/* Bouton Google */}
+        <TouchableOpacity className="flex-row items-center justify-center bg-[#b5c2c9] border border-gray-700 py-3 rounded-md mb-3">
+          <Image
+            source={{ uri: 'https://www.svgrepo.com/show/475656/google-color.svg' }}
+            className="w-5 h-5 mr-2"
+            resizeMode="contain"
+          />
+          <Text className="text-gray-800 text-lg font-medium">Continuer avec Google</Text>
+        </TouchableOpacity>
+
+        {/* Lien vers inscription */}
+        <View className="items-center mt-2">
+          <Text className="text-white text-lg">
+            Pas encore de compte ?{' '}
+            <Text
+              onPress={() => navigation.navigate('SignUp')}
+              className="text-[#FFD369]  font-medium"
+            >
+              S'inscrire
+            </Text>
           </Text>
-        </Pressable>
+        </View>
       </View>
-    </KeyboardAvoidingView>
+    </View>
   );
 }

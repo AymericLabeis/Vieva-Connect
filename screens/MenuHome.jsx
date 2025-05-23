@@ -9,7 +9,7 @@ export default function MenuHome() {
   return (
     <View className="flex-1 bg-gray-100 relative">
       {/* Header personnalisé */}
-      <View className="flex-row items-center px-5 py-3 bg-primaryBtn">
+      <View className="flex-row items-center px-5 py-3 bg-primary">
        <Pressable onPress={() => setIsMenuOpen(true)} className="mr-4">
         <Ionicons name="menu" size={40} color="#fff" />
       </Pressable>

@@ -1,66 +1,90 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Pressable, Alert, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import React from 'react';
+import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function SignUpScreen() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
-  const handleSignUp = () => {
-    if (!email || !password || !confirmPassword) {
-      Alert.alert('Erreur', 'Veuillez remplir tous les champs');
-      return;
-    }
-    if (password !== confirmPassword) {
-      Alert.alert('Erreur', 'Les mots de passe ne correspondent pas');
-      return;
-    }
-    // Ici, appeler ton API ou logique d'inscription
-    Alert.alert('Succès', `Inscription avec ${email}`);
-  };
+  const navigation = useNavigation();
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      className="flex-1 bg-white px-6 justify-center"
-    >
-      <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
-        <Text className="text-3xl font-bold mb-6 text-center">Inscription</Text>
+    <ScrollView className="flex-1 bg-[#eaeff4] px-4" contentContainerStyle={{ justifyContent: 'center', flexGrow: 1 }}>
+      <View className="bg-primary w-full max-w-xl mx-auto p-6 rounded-xl border-2 border-[#FFD369] shadow-xl">
 
-        <View className="space-y-4">
-          <TextInput
-            className="border border-gray-300 rounded-md px-4 py-3 text-base"
-            placeholder="Email"
-            keyboardType="email-address"
-            autoCapitalize="none"
-            value={email}
-            onChangeText={setEmail}
-          />
-
-          <TextInput
-            className="border border-gray-300 rounded-md px-4 py-3 text-base"
-            placeholder="Mot de passe"
-            secureTextEntry
-            value={password}
-            onChangeText={setPassword}
-          />
-
-          <TextInput
-            className="border border-gray-300 rounded-md px-4 py-3 text-base"
-            placeholder="Confirmer le mot de passe"
-            secureTextEntry
-            value={confirmPassword}
-            onChangeText={setConfirmPassword}
-          />
-
-          <Pressable
-            onPress={handleSignUp}
-            className="bg-blue-600 rounded-xl py-3 mt-4"
-          >
-            <Text className="text-white text-center text-lg font-semibold">S'inscrire</Text>
-          </Pressable>
+        {/* Nom + Prénom */}
+        <View className="flex-row gap-4 mb-4">
+          <View className="flex-1">
+            <Text className="text-white text-lg mb-1">Nom</Text>
+            <TextInput
+              className="bg-white text-gray-800 p-3 rounded-md border border-gray-300"
+              placeholder="Votre nom"
+            />
+          </View>
+          <View className="flex-1">
+            <Text className="text-white text-lg mb-1">Prénom</Text>
+            <TextInput
+              className="bg-white text-gray-800 p-3 rounded-md border border-gray-300"
+              placeholder="Votre prénom"
+            />
+          </View>
         </View>
-      </ScrollView>
-    </KeyboardAvoidingView>
+
+        {/* Email */}
+        <View className="mb-4">
+          <Text className="text-white text-lg mb-1">Adresse e-mail</Text>
+          <TextInput
+            className="bg-white text-gray-800 p-3 rounded-md border border-gray-300"
+            placeholder="Votre e-mail"
+            keyboardType="email-address"
+          />
+        </View>
+
+        {/* Mot de passe */}
+        <View className="mb-4">
+          <Text className="text-white text-lg mb-1">Mot de passe</Text>
+          <TextInput
+            className="bg-white text-gray-800 p-3 rounded-md border border-gray-300"
+            placeholder="Créez un mot de passe"
+            secureTextEntry
+          />
+        </View>
+
+        {/* Confirmation mot de passe */}
+        <View className="mb-4">
+          <Text className="text-white text-lg mb-1">Confirmer le mot de passe</Text>
+          <TextInput
+            className="bg-white text-gray-800 p-3 rounded-md border border-gray-300"
+            placeholder="Confirmez le mot de passe"
+            secureTextEntry
+          />
+        </View>
+
+        {/* Conditions d'utilisation */}
+        <View className="mb-4 flex-row items-start">
+          <TouchableOpacity className="w-5 h-5 bg-white border border-gray-300 rounded mr-2" />
+          <Text className="text-white">
+            J'accepte les{' '}
+            <Text className="text-[#FFD369] text-lg font-medium">Conditions Générales d'Utilisation</Text>
+          </Text>
+        </View>
+
+        {/* Bouton Créer un compte */}
+        <TouchableOpacity className="bg-[#FFD369] py-3 rounded-md mb-3">
+          <Text className="text-center text-[#37445a] text-lg font-bold">Créer un compte</Text>
+        </TouchableOpacity>
+
+        {/* Lien vers connexion */}
+        <View className="items-center">
+          <Text className="text-white text-lg">
+            Déjà un compte ?{' '}
+            <Text
+              onPress={() => navigation.navigate('Login')}
+              className="text-[#FFD369] font-medium"
+            >
+              Se connecter
+            </Text>
+          </Text>
+        </View>
+
+      </View>
+    </ScrollView>
   );
 }

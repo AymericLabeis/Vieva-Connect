@@ -1,40 +1,36 @@
-
 import React from 'react';
 import { View, Text, Image, Pressable, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 export default function HomeScreen() {
   const navigation = useNavigation();
-  const { width: windowWidth, height: windowHeight } = Dimensions.get('window');
+  const { width: windowWidth } = Dimensions.get('window');
   const buttonWidth = Math.min(windowWidth * 0.8, 500);
-  const logoHeight = windowHeight * 0.3;
+  const logoHeight = Math.min(windowWidth * 0.6, 400); // ajusté pour une meilleure proportion
 
   return (
-    <View 
-      className="bg-[#f0ffff] items-center justify-center px-6 " 
-      style={{ flex: 1 }}
-    >
+    <View className="flex-1 bg-[#f0ffff] px-6 items-center justify-center">
       {/* Logo */}
-      <Image
-        source={require('../assets/Vieva_Connect_logo.png')}
-        resizeMode="contain"
-        style={{ height: logoHeight, marginBottom: 32, width: '80%' }}
-      />
+      <View className="w-full items-center">
+        <Image
+          source={require('../assets/Vieva_Connect_logo.png')}
+          resizeMode="contain"
+          style={{ height: logoHeight, width: '80%' }}
+        />
+      </View>
 
       {/* Boutons */}
-      <View className="space-y-4" style={{ width: buttonWidth }}>
+      <View style={{ width: buttonWidth }}>
         <Pressable
           onPress={() => navigation.navigate('Login')}
           className="bg-primary rounded-xl py-3"
-          style={{ width: '100%' }}
         >
           <Text className="text-white text-center font-inter text-lg">Connexion</Text>
         </Pressable>
 
         <Pressable
           onPress={() => navigation.navigate('SignUp')}
-          className="bg-primary rounded-xl py-3"
-          style={{ width: '100%' }}
+          className="bg-primary rounded-xl py-3 mt-4"
         >
           <Text className="text-white text-center font-inter text-lg">Inscription</Text>
         </Pressable>
@@ -42,7 +38,3 @@ export default function HomeScreen() {
     </View>
   );
 }
-
-
-
-

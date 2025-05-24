@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, Pressable, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { VideoCamera, Television } from 'phosphor-react-native';
-import MenuDrawer from '../components/MenuDrawer';
+import { VideoCamera, Television, Lifebuoy } from 'phosphor-react-native';
+import HelpModal from '../components/HelpModal';
 
 const { width: windowWidth } = Dimensions.get('window');
 const computedWidth = windowWidth * 0.42;
@@ -10,17 +10,10 @@ const cardWidth = Math.min(computedWidth, 300);
 const horizontalSpacing = (windowWidth - 2 * cardWidth) / 3;
 
 export default function MenuHome({ navigation }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isHelpModalVisible, setIsHelpModalVisible] = useState(false);
 
   return (
     <View className="flex-1 bg-gray-100 relative">
-      {/* Header */}
-      <View className="flex-row items-center px-5 py-3 bg-primary">
-        <Pressable onPress={() => setIsMenuOpen(true)} className="mr-4">
-          <Ionicons name="menu" size={50} color="#fff" />
-        </Pressable>
-        <Text className="text-white text-2xl font-bold ms-1">Accueil</Text>
-      </View>
 
       {/* Cartes */}
       <View className="flex-row flex-wrap justify-center mt-10">
@@ -103,9 +96,9 @@ export default function MenuHome({ navigation }) {
           <Text className="font-semibold text-2xl text-gray-800">TV Broadcast</Text>
         </View>
 
-         {/* Cast TV */}
-         <Pressable
-          onPress={() => navigation.navigate('Contact')}
+        {/* Help */}
+        <Pressable
+          onPress={() => setIsHelpModalVisible(true)}
           style={{
             width: cardWidth,
             marginRight: horizontalSpacing,
@@ -120,9 +113,13 @@ export default function MenuHome({ navigation }) {
         </Pressable>
       </View>
 
-      {/* Menu Drawer */}
-      {isMenuOpen && <MenuDrawer onClose={() => setIsMenuOpen(false)} />}
+      {/* Help Modal */}
+      <HelpModal
+        visible={isHelpModalVisible}
+        onClose={() => setIsHelpModalVisible(false)}
+        title="Besoin d'aide ?"
+        message="Voulez-vous vraiment demander de l'aide ?"
+      />
     </View>
   );
 }
-

@@ -6,8 +6,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#32465a',    // Ton bleu personnalisé
-        secondary: '#1e3a8a',  // Un autre exemple
+        primary: '#32465a',    
+        secondary: '#1e3a8a',  
         navColor:'#5C5D8F',
       },
       fontFamily: {

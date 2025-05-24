@@ -7,7 +7,7 @@ export default function SignUpScreen() {
 
   return (
     <ScrollView className="flex-1 bg-[#eaeff4] px-4" contentContainerStyle={{ justifyContent: 'center', flexGrow: 1 }}>
-      <View className="bg-primary w-full max-w-xl mx-auto p-6 rounded-xl border-2 border-[#FFD369] shadow-xl">
+      <View className="bg-primary w-full max-w-xl mx-auto p-6 rounded-xl border-2 border-[#FFD369] shadow-xl my-10">
 
         {/* Nom + Prénom */}
         <View className="flex-row gap-4 mb-4">
@@ -60,9 +60,9 @@ export default function SignUpScreen() {
         {/* Conditions d'utilisation */}
         <View className="mb-4 flex-row items-start">
           <TouchableOpacity className="w-5 h-5 bg-white border border-gray-300 rounded mr-2" />
-          <Text className="text-white">
+          <Text className="text-white text-sm">
             J'accepte les{' '}
-            <Text className="text-[#FFD369] text-lg font-medium">Conditions Générales d'Utilisation</Text>
+            <Text className="text-[#FFD369] font-medium">Conditions Générales d'Utilisation</Text>
           </Text>
         </View>
 

@@ -7,7 +7,7 @@ export default function SignUpScreen() {
 
   return (
     <ScrollView className="flex-1 bg-[#eaeff4] px-4" contentContainerStyle={{ justifyContent: 'center', flexGrow: 1 }}>
-      <View className="bg-primary w-full max-w-xl mx-auto p-6 rounded-xl border-2 border-[#FFD369] shadow-xl my-10">
+      <View className="bg-primary w-full max-w-xl mx-auto p-6 rounded-xl border-2 border-secondary shadow-xl my-10">
 
         {/* Nom + Prénom */}
         <View className="flex-row gap-4 mb-4">
@@ -67,7 +67,7 @@ export default function SignUpScreen() {
         </View>
 
         {/* Bouton Créer un compte */}
-        <TouchableOpacity className="bg-[#FFD369] py-3 rounded-md mb-3">
+        <TouchableOpacity className="bg-secondary py-3 rounded-md mb-3">
           <Text className="text-center text-[#37445a] text-lg font-bold">Créer un compte</Text>
         </TouchableOpacity>
 
@@ -77,7 +77,7 @@ export default function SignUpScreen() {
             Déjà un compte ?{' '}
             <Text
               onPress={() => navigation.navigate('Login')}
-              className="text-[#FFD369] font-medium"
+              className="text-secondary font-medium"
             >
               Se connecter
             </Text>

@@ -4,13 +4,19 @@ import { Ionicons } from '@expo/vector-icons';
 import { VideoCamera, Television, Lifebuoy } from 'phosphor-react-native';
 import HelpModal from '../components/HelpModal';
 
-const { width: windowWidth } = Dimensions.get('window');
+const { width: windowWidth, height: windowHeight } = Dimensions.get('window');
 
 const isLargeScreen = windowWidth >= 1200;
-const cardWidthPercent = isLargeScreen ? '30%' : '45%';
+const numColumns = isLargeScreen ? 3 : 2;
 
-const iconSize = 90; 
-const fontSize = 20;
+// Espacement horizontal et calculs responsives
+const horizontalSpacing = 16;
+const totalSpacing = horizontalSpacing * (numColumns + 1);
+const rawCardWidth = (windowWidth - totalSpacing) / numColumns;
+const cardWidth = Math.min(rawCardWidth, 500);
+
+const iconSize = Math.max(50, Math.min(90, windowWidth * 0.075));
+const fontSize = Math.max(18, Math.min(30, windowWidth * 0.025));
 
 export default function MenuHome({ navigation }) {
   const [isHelpModalVisible, setIsHelpModalVisible] = useState(false);
@@ -19,23 +25,23 @@ export default function MenuHome({ navigation }) {
     <Pressable
       onPress={onPress}
       style={{
-        width: cardWidthPercent,
-        maxWidth: 500,
-        padding: 16,
-        margin:10,
+        width: cardWidth,
+        marginHorizontal: horizontalSpacing / 2,
       }}
-      className="bg-white rounded-2xl shadow-md border border-gray-200 justify-center items-center mb-4"
+      className="bg-white p-3 rounded-2xl shadow-md border border-gray-200 items-center mb-4"
     >
-      <View className={`${bg} p-3 rounded-full mb-3`}>
-        {typeof Icon === 'function' ? (
-          <Icon size={iconSize} color="#fff" weight="fill" />
-        ) : (
-          <Ionicons name={Icon} size={iconSize} color="#fff" />
-        )}
+      <View className="flex-1 items-center justify-center">
+        <View className={`${bg} p-4 rounded-full mb-3`}>
+          {typeof Icon === 'function' ? (
+            <Icon size={iconSize} color="#fff" weight="fill" />
+          ) : (
+            <Ionicons name={Icon} size={iconSize} color="#fff" />
+          )}
+        </View>
+        <Text style={{ fontSize }} className="font-semibold text-gray-800 text-center">
+          {label}
+        </Text>
       </View>
-      <Text style={{ fontSize }} className="font-semibold text-gray-800 text-center">
-        {label}
-      </Text>
     </Pressable>
   );
 
@@ -46,6 +52,7 @@ export default function MenuHome({ navigation }) {
         flex: 1,
         justifyContent: isLargeScreen ? 'center' : 'flex-start',
         paddingTop: isLargeScreen ? 0 : 40,
+        minHeight: windowHeight,
       }}
     >
       <View

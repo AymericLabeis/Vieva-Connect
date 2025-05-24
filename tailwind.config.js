@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       colors: {
         primary: '#32465a',    
-        secondary: '#1e3a8a',  
+        secondary: '#FFB84D',  
         navColor:'#5C5D8F',
       },
       fontFamily: {

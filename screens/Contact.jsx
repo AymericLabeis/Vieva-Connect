@@ -1,38 +1,39 @@
 import React, { useState } from 'react';
-import { View, Text, Modal, Pressable } from 'react-native';
+import { View, Text, Modal, Pressable, ActivityIndicator } from 'react-native';
 
-export default function ExampleModal() {
+export default function LoadingModalScreen() {
   const [modalVisible, setModalVisible] = useState(false);
 
+  const openModal = () => {
+    setModalVisible(true);
+
+    // Simule un chargement de 3 secondes
+    setTimeout(() => {
+      setModalVisible(false);
+    }, 3000);
+  };
+
   return (
-    <View className="flex-1 justify-center items-center bg-gray-100">
-      {/* Bouton pour ouvrir la modal */}
+    <View className="flex-1 items-center justify-center bg-white px-4">
+      {/* Bouton d’ouverture */}
       <Pressable
-        onPress={() => setModalVisible(true)}
-        className="bg-blue-500 px-5 py-2 rounded-xl"
+        onPress={openModal}
+        className="bg-blue-600 px-6 py-3 rounded-xl"
       >
-        <Text className="text-white text-lg font-semibold">Ouvrir la modal</Text>
+        <Text className="text-white text-lg font-semibold">Afficher le chargement</Text>
       </Pressable>
 
-      {/* Modal */}
+      {/* Modal de chargement */}
       <Modal
+        transparent
         animationType="fade"
-        transparent={true}
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}
       >
-        <View className="flex-1 justify-center items-center bg-black/50">
-          <View className="bg-white rounded-xl p-6 w-80 shadow-lg">
-            <Text className="text-xl font-bold mb-4 text-center">Titre de la modal</Text>
-            <Text className="text-gray-700 mb-4 text-center">
-              Ceci est le contenu de la modal.
-            </Text>
-            <Pressable
-              onPress={() => setModalVisible(false)}
-              className="bg-red-500 px-4 py-2 rounded-lg mt-2 self-center"
-            >
-              <Text className="text-white font-medium">Fermer</Text>
-            </Pressable>
+        <View className="flex-1 bg-black/40 items-center justify-center">
+          <View className="bg-white rounded-2xl p-6 items-center justify-center w-72 shadow-lg">
+            <ActivityIndicator size="large" color="#32465a" />
+            <Text className="mt-4 text-lg text-gray-800">Chargement en cours...</Text>
           </View>
         </View>
       </Modal>

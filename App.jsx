@@ -20,20 +20,20 @@ const Drawer = createDrawerNavigator();
 function StackScreens() {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="MenuHome"
       screenOptions={({ navigation }) => ({
         headerStyle: { backgroundColor: '#32465a' },
         headerTintColor: '#fff',
         headerTitleStyle: { fontWeight: 'bold',
-          fontSize: 22, 
-          marginLeft: 15,  
+          fontSize: 28, 
+         
          },
         headerLeft: ({ tintColor }) => (
           <Pressable
             onPress={() => navigation.getParent()?.toggleDrawer()}
-            style={{ marginLeft: 15 }}
+            style={{ margin: 15 }}
           >
-            <Ionicons name="menu" size={30} color={tintColor || '#fff'} />
+            <Ionicons name="menu" size={50} color={tintColor || '#fff'} />
           </Pressable>
         ),
       })}
@@ -66,9 +66,9 @@ function StackScreens() {
           headerLeft: () => (
             <Pressable
               onPress={() => navigation.goBack()}
-              style={{ marginLeft: 15 }}
+              style={{ margin: 15 }}
             >
-              <Ionicons name="arrow-back" size={28} color="#fff" />
+              <Ionicons name="arrow-back" size={40} color="#fff" />
             </Pressable>
           ),
         })}
@@ -92,41 +92,47 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Drawer.Navigator
-        screenOptions={{
-          drawerActiveTintColor: '#32465a',
-          drawerLabelStyle: { fontWeight: 'bold' },
-        }}
-      >
-        {/* Plusieurs liens dans le menu Drawer */}
-        <Drawer.Screen
-          name="MenuHome"
-          component={StackScreens}
-          options={{ headerShown: false, title: 'Accueil' }}
-        />
-        <Drawer.Screen
-          name="Profil"
-          component={Contact}
-          options={{ title: 'Profil' }}
-        />
-        <Drawer.Screen
-          name="Parametre"
-          component={LoginScreen}
-          options={{ title: 'Paramètre' }}
-        />
-        <Drawer.Screen
-          name="Support technique"
-          component={SignUpScreen}
-          options={{ title: "support technique" }}
-        />
-        <Drawer.Screen
-          name="Deconnexion"
-          component={SignUpScreen}
-          options={{ title: "Déconnexion" }}
-        />
-      </Drawer.Navigator>
-    </NavigationContainer>
-  );
+  <NavigationContainer>
+    <Drawer.Navigator
+      screenOptions={{
+        drawerActiveTintColor: '#32465a',
+        drawerLabelStyle: {
+          fontWeight: 'bold',
+          fontSize: 18,        // Augmentation de la taille du texte
+          marginVertical: 2, 
+          marginLeft: 15,  // Espace entre les éléments
+        },
+        drawerItemStyle: {
+          marginVertical: 6,   // Marge autour de chaque item
+        },
+      }}
+    >
+      <Drawer.Screen
+        name="MenuHome"
+        component={StackScreens}
+        options={{ headerShown: false, title: 'Accueil' }}
+      />
+      <Drawer.Screen
+        name="Profil"
+        component={Contact}
+        options={{ title: 'Profil' }}
+      />
+      <Drawer.Screen
+        name="Parametre"
+        component={LoginScreen}
+        options={{ title: 'Paramètre' }}
+      />
+      <Drawer.Screen
+        name="Support technique"
+        component={SignUpScreen}
+        options={{ title: "Support technique" }}
+      />
+      <Drawer.Screen
+        name="Deconnexion"
+        component={SignUpScreen}
+        options={{ title: "Déconnexion" }}
+      />
+    </Drawer.Navigator>
+  </NavigationContainer>
+);
 }
-

@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.aymeric789.ProjectFuncpro"
     },
     "web": {
       "bundler": "metro",
@@ -27,6 +28,11 @@
     },
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "8a3bb78f-0c71-43be-beb1-aad2f9f80356"
+      }
+    }
   }
 }

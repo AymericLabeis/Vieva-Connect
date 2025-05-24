@@ -38,8 +38,8 @@ export default function LoginScreen() {
   };
 
   return (
-    <View className="flex-1 justify-center items-center bg-[#f0ffff] px-4">
-      <View className="w-full max-w-xl bg-primary p-6 rounded-xl border-2 border-[#FFD369] shadow-xl my-10">
+    <View className="flex-1 justify-center items-center bg-[#b5c2c9] px-4">
+      <View className="w-full max-w-xl bg-primary p-6 rounded-xl border-2 border-secondary shadow-xl my-10">
 
         {/* Email */}
         <Text className="text-white text-xl mb-1">Adresse e-mail</Text>
@@ -88,21 +88,21 @@ export default function LoginScreen() {
         {/* Lien mot de passe oublié */}
         <View className="mb-3 items-center">
           <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
-            <Text className="text-[#FFD369] text-lg font-medium">Mot de passe oublié ?</Text>
+            <Text className="text-secondary text-lg font-medium">Mot de passe oublié ?</Text>
           </TouchableOpacity>
         </View>
 
         {/* Bouton Connexion */}
         <TouchableOpacity
           onPress={handleLogin}
-          className="bg-[#FFD369] p-2 rounded-md mb-3"
+          className="bg-[#b5c2c9] p-2 rounded-md mb-3"
           disabled={!email.trim() || !password.trim()}
         >
           <Text className="text-center text-[#37445a] text-xl font-bold">Connexion</Text>
         </TouchableOpacity>
 
         {/* Bouton Google */}
-        <TouchableOpacity className="flex-row items-center justify-center bg-[#b5c2c9] border border-gray-700 p-2 rounded-md mb-3">
+        <TouchableOpacity className="flex-row items-center justify-center bg-[#E6E6E3] border border-gray-700 p-2 rounded-md mb-3">
           <Image
             source={{ uri: 'https://www.svgrepo.com/show/475656/google-color.svg' }}
             className="w-5 h-5 mr-2"
@@ -117,7 +117,7 @@ export default function LoginScreen() {
             Pas encore de compte ?{' '}
             <Text
               onPress={() => navigation.navigate('SignUp')}
-              className="text-[#FFD369] font-medium"
+              className="text-secondary font-medium"
             >
               S'inscrire
             </Text>

@@ -8,7 +8,7 @@ module.exports = {
       colors: {
         primary: '#32465a',    
         secondary: '#FFB84D',  
-        navColor:'#5C5D8F',
+        AccountBg:'#b5c2c9',
       },
       fontFamily: {
     inter: ["Inter_400Regular", "sans-serif"],

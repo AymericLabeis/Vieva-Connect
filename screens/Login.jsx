@@ -38,7 +38,7 @@ export default function LoginScreen() {
   };
 
   return (
-    <View className="flex-1 justify-center items-center bg-[#b5c2c9] px-4">
+    <View className="flex-1 justify-center items-center bg-acountBg px-4">
       <View className="w-full max-w-xl bg-primary p-6 rounded-xl border-2 border-secondary shadow-xl my-10">
 
         {/* Email */}

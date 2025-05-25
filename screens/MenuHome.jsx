@@ -7,9 +7,9 @@ import HelpModal from '../components/HelpModal';
 const { width: windowWidth } = Dimensions.get('window');
 
 const isLargeScreen = windowWidth >= 1200;
-const cardWidthPercent = isLargeScreen ? '30%' : '45%';
+const cardWidthPercent = isLargeScreen ? '30%' : '43%';
 
-const iconSize = 90; 
+const iconSize = 70; 
 const fontSize = 20;
 
 export default function MenuHome({ navigation }) {
@@ -83,7 +83,7 @@ export default function MenuHome({ navigation }) {
           onPress={() => console.log('TV Broadcast')}
           bg="bg-gradient-to-tr from-yellow-400 via-yellow-500 to-yellow-600"
           Icon={Television}
-          label="TV Broadcast"
+          label="Caster TV"
         />
         <Card
           onPress={() => setIsHelpModalVisible(true)}

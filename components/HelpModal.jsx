@@ -13,10 +13,11 @@ export default function HelpModal({ visible, onClose, onConfirm, title, message 
     >
       <View className="flex-1 justify-center items-center bg-black bg-opacity-60">
         <View
-          className="rounded-xl shadow-xl"
+          className="rounded-xl shadow-xl overflow-hidden"
           style={{
             width: windowWidth * 0.9,
-            maxWidth: 700, 
+            maxWidth: 700,
+            borderRadius: 10, 
           }}
         >
           {/* Modal Header */}
@@ -35,8 +36,7 @@ export default function HelpModal({ visible, onClose, onConfirm, title, message 
               onPress={onClose}
               className="px-4 py-2 rounded-lg border border-white bg-red-600 me-4"
             >
-              <Text className="text-white font-semibold text-xl ">Annuler</Text>
-
+              <Text className="text-white font-semibold text-xl">Annuler</Text>
             </TouchableOpacity>
 
             <TouchableOpacity

@@ -22,16 +22,18 @@ const Drawer = createDrawerNavigator();
 const stackScreenOptions = ({ navigation }) => ({
   headerStyle: {
     backgroundColor: '#32465a',
-    
+    height:70,
+
   },
   headerTintColor: '#fff',
   headerTitleStyle: {
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 25,
+    
   },
   headerLeft: ({ tintColor }) => (
     <Pressable onPress={() => navigation.getParent()?.toggleDrawer()} style={{ margin: 15 }}>
-      <Ionicons name="menu" size={25} color={tintColor || '#fff'} />
+      <Ionicons name="menu" size={40} color={tintColor || '#fff'} />
     </Pressable>
   ),
 });
@@ -41,26 +43,21 @@ const withBackHeader = (title) => ({
   title,
   swipeEnabled: false,
   headerStyle: {
-    backgroundColor: '#fff',
-    
+    backgroundColor: '#32465a',
+    height:70,
   },
   headerTitleStyle: {
     fontWeight: 'bold',
-    fontSize: 20,
-    color: '#32465a',
+    fontSize: 25,
+    color: '#fff',
   },
-  headerLeft: ({ navigation }) => (
-    <Pressable onPress={() => navigation.goBack()} style={{ margin: 15 }}>
-      <Ionicons name="arrow-back" size={30} color="#32465a" />
-    </Pressable>
-  ),
 });
 
 // Stack principal avec le menu burger
 function StackScreens() {
   return (
-    <Stack.Navigator initialRouteName="MenuHome" screenOptions={stackScreenOptions}>
-      <Stack.Screen name="MenuHome" component={MenuScreen} options={{ title: 'Accueil' }} />
+    <Stack.Navigator initialRouteName="Accueil" screenOptions={stackScreenOptions}>
+      <Stack.Screen name="Accueil" component={MenuScreen} options={{ title: 'Accueil' }} />
       <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
       <Stack.Screen name="SignUp" component={SignUpScreen} options={{ headerShown: false }} />
@@ -115,15 +112,15 @@ export default function App() {
           ...withBackHeader('Profil'),
           headerLeft: () => (
             <Pressable onPress={() => navigation.goBack()} style={{ margin: 15 }}>
-              <Ionicons name="arrow-back" size={25} color="#32465a" />
+              <Ionicons name="arrow-back" size={30} color="#fff" />
             </Pressable>
           ),
         })} />
-        <Drawer.Screen name="Parametre" component={LoginScreen} options={({ navigation }) => ({
+        <Drawer.Screen name="Parametre" component={Profil} options={({ navigation }) => ({
           ...withBackHeader('Paramètre'),
           headerLeft: () => (
             <Pressable onPress={() => navigation.goBack()} style={{ margin: 15 }}>
-              <Ionicons name="arrow-back" size={25} color="#32465a" />
+              <Ionicons name="arrow-back" size={30} color="#fff" />
             </Pressable>
           ),
         })} />
@@ -131,7 +128,7 @@ export default function App() {
           ...withBackHeader('Support technique'),
           headerLeft: () => (
             <Pressable onPress={() => navigation.goBack()} style={{ margin: 15 }}>
-              <Ionicons name="arrow-back" size={25} color="#32465a" />
+              <Ionicons name="arrow-back" size={30} color="#fff" />
             </Pressable>
           ),
         })} />
@@ -139,7 +136,7 @@ export default function App() {
           ...withBackHeader('Déconnexion'),
           headerLeft: () => (
             <Pressable onPress={() => navigation.goBack()} style={{ margin: 15 }}>
-              <Ionicons name="arrow-back" size={25} color="#32465a" />
+              <Ionicons name="arrow-back" size={25} color="#fff" />
             </Pressable>
           ),
         })} />

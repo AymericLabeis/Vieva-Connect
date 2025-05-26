@@ -15,7 +15,7 @@ export default function ProfileScreen() {
 
   return (
     <ScrollView className="flex-1 bg-[#eaeff4] px-4" contentContainerStyle={{ justifyContent: 'center', flexGrow: 1 }}>
-          <View className="bg-primary w-full max-w-xl mx-auto p-6 rounded-xl border-2 border-[#37445a] shadow-xl my-10">
+          <View className="bg-primary w-full max-w-xl mx-auto p-6 rounded-xl border-2 border-secondary shadow-xl my-10">
 
         {/* Ligne image + inputs nom/prénom */}
         <View className="flex-row  mb-3">
@@ -36,7 +36,7 @@ export default function ProfileScreen() {
                 borderRadius: 50,
               }}
             >
-              <Icon name="pencil" size={15} color="white" />
+              <Icon name="pencil" size={15} color="#37445a" />
             </TouchableOpacity>
           </View>
 

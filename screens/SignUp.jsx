@@ -67,7 +67,7 @@ export default function SignUpScreen() {
         </View>
 
         {/* Bouton Créer un compte */}
-        <TouchableOpacity className="bg-secondary py-3 rounded-md mb-3">
+        <TouchableOpacity className="bg-[#b5c2c9] p-2 rounded-md mb-3">
           <Text className="text-center text-[#37445a] text-lg font-bold">Créer un compte</Text>
         </TouchableOpacity>
 

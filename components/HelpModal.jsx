@@ -11,7 +11,7 @@ export default function HelpModal({ visible, onClose, onConfirm, title, message 
       animationType="fade"
       onRequestClose={onClose}
     >
-      <View className="flex-1 justify-center items-center bg-black bg-opacity-60">
+      <View className="flex-1 justify-center items-center bg-black/50">
         <View
           className="rounded-xl shadow-xl overflow-hidden"
           style={{
